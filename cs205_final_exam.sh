@@ -15,3 +15,31 @@
 # The data file will be passed in to the script as a positional parameter and will not
 # necessarily be called pokemon.dat. However, you can assume that any file passed to this
 # script will be formatted exactly the way pokemon.dat is formatted.
+
+BEGIN{print"======== SUMMARY OF POKEMON.DAT ======"}
+{
+# will check that there is more than one line and checks if the lst field is not True
+if (NR != 1 && $NF != "True" )
+	{
+            # count increments by one
+            count+=1
+	}
+
+# will see that there is more than one line and checks if the last field is not True
+if (NR != 1 && $NF != "True" )
+	{
+            # HP will increase by the amount in columns 5, sum will increment by 1, def will increase by the amount in column 7
+	    hp+=$5
+	    sum+=1
+
+	    def+=$7
+	}
+}
+END{
+# displays from what instructions said
+print "\tTotal Non-Lengendary Pokemon: " count
+print "\tAvg. HP: " hp/NR
+print "\tAvg. Defense: " def/NR
+print "====== END SUMMARY ======="
+}
+
